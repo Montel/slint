@@ -7,8 +7,9 @@ import { EdgeDivider, HorizontalResizeDivider } from "index.slint";
 import { OutlinePane } from "outline-pane.slint";
 import {
     InspectorAppearanceSection, InspectorBorderSection, InspectorContext, InspectorEffectsSection, InspectorEnabledSection,
-    InspectorGeometrySection, InspectorImageSection, InspectorLayoutSection, InspectorOrientationSection,
-    InspectorTextAlignmentSection, InspectorTextContentSection, InspectorTextWrapSection, InspectorTypographySection,
+    InspectorGeometrySection, InspectorImageSection, InspectorInputTypeSection, InspectorLayoutSection,
+    InspectorOrientationSection, InspectorTextAlignmentSection, InspectorTextContentSection, InspectorTextWrapSection,
+    InspectorTypographySection,
 } from "inspector/sections/index.slint";
 import { EditorScrollView } from "editor-scroll-view.slint";
 
@@ -83,6 +84,10 @@ export component InspectorPane inherits Rectangle {
                 }
 
                 if InspectorContext.is-enable-selection(): InspectorEnabledSection { }
+
+                if InspectorContext.is-lineedit-selection(): InspectorInputTypeSection {
+                    popup-bottom: root.popup-bottom;
+                }
 
                 if InspectorContext.is-layout-selection(): InspectorLayoutSection { }
 
